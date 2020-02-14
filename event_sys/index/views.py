@@ -7,12 +7,18 @@ from django.http import JsonResponse
 
 
 def listevent(request):
+    if not request.session.get('is_login', None):
+        msg = '请先登录'
+        return JsonResponse({'ret': 1, 'msg': msg})
     qs = models.event.objects.values()
     events = list(qs)
     return JsonResponse({'ret':0,'event':events})
 
 
 def listevent_details(request):
+    if not request.session.get('is_login', None):
+        msg = '请先登录'
+        return JsonResponse({'ret': 1, 'msg': msg})
     if request.method == 'GET':
         request.params = request.GET
         event_id = request.params['id']

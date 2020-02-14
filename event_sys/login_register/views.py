@@ -16,6 +16,7 @@ def login(request):
             request.session['is_login'] = True
             request.session['user_id'] = user.id
             request.session['user_name'] = user.name
+            request.session['permission'] = user.permission
             return JsonResponse({'ret': 0 })
         else:
             msg = '用户名或密码不正确！'
@@ -23,6 +24,15 @@ def login(request):
     except:
         msg = '用户名不存在！'
         return JsonResponse({'ret': 1,'msg':msg})
+
+
+def logout(request):
+    if not request.session.get('is_login',None):
+        msg = '请先登录'
+        return  JsonResponse({'ret':1,'msg':msg})
+    request.session.flush()
+    msg = '已退出'
+    return JsonResponse({'ret':0,'msg':msg})
 
 
 def register(request):

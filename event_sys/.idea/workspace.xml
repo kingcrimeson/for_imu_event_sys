@@ -24,7 +24,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
-  <component name="RunManager" selected="Django server.event_sys">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\61609\Desktop\event_sys\mgr" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.tc003">
     <configuration name="tc001" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="event_sys" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -69,6 +74,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="tc003" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="event_sys" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/tc003.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="event_sys" type="Python.DjangoServer" factoryName="Django server">
       <module name="event_sys" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -95,6 +122,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.tc003" />
         <item itemvalue="Python.tc002" />
         <item itemvalue="Python.tc001" />
       </list>
@@ -112,6 +140,7 @@
       <updated>1581602719439</updated>
       <workItem from="1581602720558" duration="2840000" />
       <workItem from="1581637624489" duration="19220000" />
+      <workItem from="1581668230571" duration="10387000" />
     </task>
     <servers />
   </component>
@@ -119,32 +148,33 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1342" height="127" key="GridCell.Tab.0.bottom" timestamp="1581666190626">
+    <state width="1342" height="175" key="GridCell.Tab.0.bottom" timestamp="1581684158335">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1342" height="127" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581666190626" />
-    <state width="1342" height="127" key="GridCell.Tab.0.center" timestamp="1581666190626">
+    <state width="1342" height="175" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581684158335" />
+    <state width="1342" height="175" key="GridCell.Tab.0.center" timestamp="1581684158334">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1342" height="127" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581666190626" />
-    <state width="1342" height="127" key="GridCell.Tab.0.left" timestamp="1581666190626">
+    <state width="1342" height="175" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581684158334" />
+    <state width="1342" height="175" key="GridCell.Tab.0.left" timestamp="1581684158334">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1342" height="127" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581666190626" />
-    <state width="1342" height="127" key="GridCell.Tab.0.right" timestamp="1581666190626">
+    <state width="1342" height="175" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581684158334" />
+    <state width="1342" height="175" key="GridCell.Tab.0.right" timestamp="1581684158334">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1342" height="127" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581666190626" />
+    <state width="1342" height="175" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581684158334" />
     <state x="555" y="226" key="com.intellij.ide.util.TipDialog" timestamp="1581637624420">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="555" y="226" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1581637624420" />
-    <state x="525" y="118" width="672" height="678" key="search.everywhere.popup" timestamp="1581658311759">
+    <state x="525" y="118" width="672" height="678" key="search.everywhere.popup" timestamp="1581680529293">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="525" y="118" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1581658311759" />
+    <state x="525" y="118" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1581680529293" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/event_sys$tc003.coverage" NAME="tc003 Coverage Results" MODIFIED="1581684113542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/event_sys$tc001.coverage" NAME="tc001 Coverage Results" MODIFIED="1581651260791" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/event_sys$tc002.coverage" NAME="tc002 Coverage Results" MODIFIED="1581658556945" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
   </component>

@@ -8,4 +8,4 @@ class User(models.Model):
     password = models.CharField(max_length=256)
     email = models.EmailField(unique=True)
     c_time = models.DateTimeField(auto_now_add=True)
-    permission = models.CharField(max_length=20)
+    permission = models.IntegerField(null=True)
