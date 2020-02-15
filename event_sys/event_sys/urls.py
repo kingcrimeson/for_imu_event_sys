@@ -22,6 +22,7 @@ urlpatterns = [
     url('admin/', admin.site.urls),
     url('api/login',login_register.views.login),
     url('api/logout',login_register.views.logout),
+    url('api/details',index.views.listevent_details),
     url('api/register',login_register.views.register),
     url('api/index',index.views.listevent),
     url('api/mgr',include('mgr.urls'))
