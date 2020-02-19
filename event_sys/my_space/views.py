@@ -80,6 +80,8 @@ def event_joined(request):
              event = models.event.objects.get(id=eventid)
              member = event_members.objects.filter(event_id=event,member_nichen=nichen)
              member.delete()
+             event.event_now_number = event.event_now_number - 1
+             event.save()
              ret = 0
              msg = '退出成功'
         except:

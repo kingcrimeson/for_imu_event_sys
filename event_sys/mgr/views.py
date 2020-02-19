@@ -7,6 +7,8 @@ import datetime
 
 def list(request):
     qs = models.event.objects.values()
+    if qs.none():
+        return JsonResponse({'ret':1,'msg':'还没有活动'})
     events = list(qs)
     return JsonResponse({'ret': 0, 'event': events})
 
@@ -14,16 +16,18 @@ def list(request):
 def listdetail(request):
     request.params = request.GET
     event_id = request.params['id']
-    event_msg = models.event.objects.get(id=event_id)
-    event_detail = models.event_details.objects.get(id=event_id)
-    user_id = request.session['user_id']
-    same_id = models.event_members.objects.filter(id=user_id)
-    if same_id:
-       whether_or_not = 1
-    else :
-       whether_or_not = 0
-    return JsonResponse({'ret': 0,'whether_or_not':whether_or_not,'event_msg':event_msg,'event_detail':event_detail})
-
+    try:
+         event_msg = models.event.objects.get(id=event_id)
+         event_detail = models.event_details.objects.get(id=event_id)
+         user_id = request.session['user_id']
+         same_id = models.event_members.objects.filter(id=user_id)
+         if same_id:
+              whether_or_not = 1
+         else :
+              whether_or_not = 0
+         return JsonResponse({'ret': 0,'whether_or_not':whether_or_not,'event_msg':event_msg,'event_detail':event_detail})
+    except:
+         return JsonResponse({'ret':1,'msg':'活动不存在'})
 
 def delete_event(request):
     request.params = json.loads(request.body)

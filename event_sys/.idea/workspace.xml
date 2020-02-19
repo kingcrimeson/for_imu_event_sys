@@ -32,7 +32,7 @@
       <recent name="C:\Users\61609\Desktop\event_sys\mgr" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.tc002">
+  <component name="RunManager" selected="Django server.event_sys">
     <configuration name="tc002" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="event_sys" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -196,6 +196,8 @@
       <workItem from="1581832209776" duration="652000" />
       <workItem from="1581894937451" duration="3438000" />
       <workItem from="1581987737494" duration="44347000" />
+      <workItem from="1582109236841" duration="440000" />
+      <workItem from="1582109700076" duration="327000" />
     </task>
     <servers />
   </component>
@@ -207,26 +209,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="517" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1582096412911" />
-    <state width="1493" height="185" key="GridCell.Tab.0.bottom" timestamp="1582099434699">
+    <state width="723" height="185" key="GridCell.Tab.0.bottom" timestamp="1582109676335">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="185" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582099434699" />
-    <state width="1493" height="185" key="GridCell.Tab.0.center" timestamp="1582099434699">
+    <state width="723" height="185" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582109676335" />
+    <state width="723" height="185" key="GridCell.Tab.0.center" timestamp="1582109676335">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="185" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582099434699" />
-    <state width="1493" height="185" key="GridCell.Tab.0.left" timestamp="1582099434699">
+    <state width="723" height="185" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582109676335" />
+    <state width="723" height="185" key="GridCell.Tab.0.left" timestamp="1582109676334">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="185" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582099434699" />
-    <state width="1493" height="185" key="GridCell.Tab.0.right" timestamp="1582099434699">
+    <state width="723" height="185" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582109676334" />
+    <state width="723" height="185" key="GridCell.Tab.0.right" timestamp="1582109676335">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="185" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582099434699" />
-    <state x="555" y="226" key="com.intellij.ide.util.TipDialog" timestamp="1581987738945">
+    <state width="723" height="185" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582109676335" />
+    <state x="555" y="226" key="com.intellij.ide.util.TipDialog" timestamp="1582109700352">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="555" y="226" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1581987738945" />
+    <state x="555" y="226" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1582109700352" />
     <state x="526" y="118" width="672" height="678" key="search.everywhere.popup" timestamp="1582097796310">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
