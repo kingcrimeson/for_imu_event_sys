@@ -2,7 +2,7 @@ from django.shortcuts import render
 from . import models
 import json
 from django.http import JsonResponse
-
+from login_register.models import User
 # Create your views here.
 
 
@@ -42,13 +42,14 @@ def listevent_details(request):
         event_id = request.params['event_id']
         event = models.event.objects.get(id=event_id)
         if event.event_now_number<event.event_max_number:
+            event.event_now_number = event.event_now_number + 1
             new_joiner = models.event_members.objects.create()
             new_joiner.member_nichen = info['nichen']
-            new_joiner.member_name = info['real_name']
+            new_joiner.member_real_name = info['real_name']
             new_joiner.member_tel = info['tel']
             new_joiner.member_qq = info['qq']
-            new_joiner.member_id = request.session['user_id']
-            new_joiner.event_id = event_id
+            new_joiner.member_id = User.objects.get(nichen=info['nichen'])
+            new_joiner.event_id = event
             new_joiner.save()
             msg = '报名成功'
         else:

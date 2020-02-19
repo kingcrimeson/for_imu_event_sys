@@ -25,5 +25,6 @@ urlpatterns = [
     url('api/details',index.views.listevent_details),
     url('api/register',login_register.views.register),
     url('api/index',index.views.listevent),
-    url('api/mgr',include('mgr.urls'))
+    url('api/mgr',include('mgr.urls')),
+    url('api/my_space',include('my_space.url'))
 ]

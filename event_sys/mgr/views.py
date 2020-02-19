@@ -30,13 +30,15 @@ def delete_event(request):
     event_id = request.params['event_id']
     try:
         del_event = event.objects.get(id=event_id)
-    except event.DoesNotExist:
-        return {
+        del_event.delete()
+        return JsonResponse({'ret':0,'msg':'删除成功'})
+    except:
+        return JsonResponse({
             'ret': 1,
-            'msg': f'id 为`{event_id}`的客户不存在'
-        }
+            'msg': f'id 为`{event_id}`的活动不存在'
+        })
 
-    # delete 方法就将该记录从数据库中删除了
-    del_event.delete()
+
+
 
     return JsonResponse({'ret': 0})

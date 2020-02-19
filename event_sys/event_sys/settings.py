@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'login_register',
     'index',
-    'mgr'
+    'mgr',
+    'my_space'
 ]
 
 MIDDLEWARE = [
