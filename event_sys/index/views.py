@@ -3,6 +3,8 @@ from . import models
 import json
 from django.http import JsonResponse
 from login_register.models import User
+from django.core.paginator import Paginator, EmptyPage
+from django.db.models import F
 # Create your views here.
 
 
@@ -10,11 +12,20 @@ def listevent(request):
     if 'is_login' not in request.session:
         msg = '请先登录'
         return JsonResponse({'ret': 1, 'msg': msg})
-    qs = models.event.objects.values()
-    if qs.none():
-        return JsonResponse({'ret': 1,'msg':'还没有活动'})
-    events = list(qs)
-    return JsonResponse({'ret':0,'event':events})
+    request.params = request.GET
+    try:
+        qs = models.event.objects.annotate(events_starter=F('event_starter__nichen'))\
+                                       .values('event_name','event_start_time','event_end_time','event_sign_up_time','event_localtion','event_max_number','event_now_number','events_starter')
+        if qs.none():
+            return JsonResponse({'ret': 1,'msg':'还没有活动'})
+        pagenum = request.params['pagenum']
+        pagesize = request.params['pagesize']
+        pgnt = Paginator(qs, pagesize)
+        page = pgnt.page(pagenum)
+        events = list(page)
+        return JsonResponse({'ret':0,'event':events,'total':pgnt.count})
+    except EmptyPage:
+        return JsonResponse({'ret':0,'event':[]})
 
 
 def listevent_details(request):

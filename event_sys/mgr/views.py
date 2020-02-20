@@ -3,15 +3,25 @@ from django.http import JsonResponse
 from . import models
 import json
 from index.models import event
+from django.core.paginator import Paginator, EmptyPage
 import datetime
 
 def list(request):
-    qs = models.event.objects.values()
-    if qs.none():
-        return JsonResponse({'ret':1,'msg':'还没有活动'})
-    events = list(qs)
-    return JsonResponse({'ret': 0, 'event': events})
-
+    request.params = request.GET
+    try:
+        qs = models.event.objects.annotate(events_starter=F('event_starter__nichen')) \
+            .values('event_name', 'event_start_time', 'event_end_time', 'event_sign_up_time', 'event_localtion',
+                    'event_max_number', 'event_now_number', 'events_starter')
+        if qs.none():
+            return JsonResponse({'ret': 1, 'msg': '还没有活动'})
+        pagenum = request.params['pagenum']
+        pagesize = request.params['pagesize']
+        pgnt = Paginator(qs, pagesize)
+        page = pgnt.page(pagenum)
+        events = list(page)
+        return JsonResponse({'ret': 0, 'event': events, 'total': pgnt.count})
+    except EmptyPage:
+        return JsonResponse({'ret': 0, 'event': []})
 
 def listdetail(request):
     request.params = request.GET
@@ -42,7 +52,7 @@ def delete_event(request):
             'msg': f'id 为`{event_id}`的活动不存在'
         })
 
-
-
-
     return JsonResponse({'ret': 0})
+
+
+

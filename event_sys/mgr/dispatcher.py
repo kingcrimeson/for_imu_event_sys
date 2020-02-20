@@ -2,12 +2,12 @@ import json
 import mgr.views
 from django.http import JsonResponse
 def dispatch(request):
-    if request.session['permission'] < 1:
-        return JsonResponse({
-            'ret': 302,
-            'msg': '用户没有权限',
-              },
-            status=302)
+    #if request.session['permission'] < 1:
+     #   return JsonResponse({
+       #     'ret': 302,
+      #      'msg': '用户没有权限',
+        #      },
+         #   status=302)
 
 
     if request.method == 'GET':

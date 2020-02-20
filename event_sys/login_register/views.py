@@ -13,11 +13,14 @@ def login(request):
     try:
         user = models.User.objects.get(name=userName)
         if user.password == passWord:
-            request.session['is_login'] = True
-            request.session['user_id'] = user.id
-            request.session['user_name'] = user.name
-            request.session['permission'] = user.permission
-            return JsonResponse({'ret': 0 })
+           request.session['is_login'] = True
+           request.session['user_id'] = user.id
+           request.session['user_name'] = user.name
+           request.session['permission'] = user.permission
+           if user.permission == 1:
+                return JsonResponse({'ret':0,'permission':1})
+           else :
+                return JsonResponse({'ret':0})
         else:
             msg = '用户名或密码不正确！'
             return JsonResponse({'ret': 1,'msg':msg})

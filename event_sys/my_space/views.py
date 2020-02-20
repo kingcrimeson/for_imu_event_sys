@@ -7,16 +7,22 @@ from index.models import event,event_members,event_details
 from login_register.models import User
 from django.core import serializers
 from django.db.models import F
-
+from django.core.paginator import Paginator, EmptyPage
 
 def list_event(request):
     request.params = request.GET
     user_id = request.params['id']
     id = User.objects.get(id=user_id)
-    qs = models.event.objects.filter(event_starter=id).values()
-    events=list(qs)
-    return JsonResponse({'ret':0,'event':events})
-
+    try:
+         qs = models.event.objects.filter(event_starter=id).values()
+         pagenum = request.params['pagenum']
+         pagesize = request.params['pagesize']
+         pgnt = Paginator(qs, pagesize)
+         page = pgnt.page(pagenum)
+         events = list(page)
+         return JsonResponse({'ret': 0, 'event': events, 'total': pgnt.count})
+    except EmptyPage:
+         return JsonResponse({'ret': 0, 'event': []})
 
 def hold_event(request):
     request.params = json.loads(request.body)
@@ -30,7 +36,7 @@ def hold_event(request):
     event_max_number = info['event_max_number']
     event_detail = info['event_detail']
     s_nichen = request.params['nichen']
-    id = models.User.objects.get(nichen=s_nichen)
+    id = User.objects.get(nichen=s_nichen)
     with transaction.atomic():
         new_event = event.objects.create()
         new_event.event_starter=id
@@ -66,8 +72,14 @@ def event_joined(request):
                 events_id =F('event_id__id')
                    ) \
                 .values('events_id', 'event_name', 'event_start_time', 'event_end_time', 'event_sign_up_time', 'event_localtion')
-             events = list(qs)
-             return JsonResponse({'ret': 0, 'event': events})
+             pagenum = request.params['pagenum']
+             pagesize = request.params['pagesize']
+             pgnt = Paginator(qs, pagesize)
+             page = pgnt.page(pagenum)
+             events = list(page)
+             return JsonResponse({'ret': 0, 'event': events, 'total': pgnt.count})
+        except EmptyPage:
+            return JsonResponse({'ret': 0, 'event': []})
         except:
              return JsonResponse({'ret':1,'msg':'你还没有参与活动'})
     elif request.method == 'DELETE':

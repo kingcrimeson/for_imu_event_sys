@@ -4,7 +4,7 @@ payload = {
     "nichen": "阿健",
     "event":
         {
-            "event_name": "萝卜开会",
+            "event_name": "啦啦啦",
             "event_start_time": "2020.3.14",
             "event_end_time": "2020.3.14",
             "event_sign_up_time": "2020.2.28",
