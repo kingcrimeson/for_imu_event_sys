@@ -12,6 +12,7 @@ class event(models.Model):
       event_now_number = models.IntegerField(null=True)
       event_starter = models.ForeignKey(login_register.models.User, on_delete=models.CASCADE,null = True,related_name = 'starter')
       event_mem = models.ManyToManyField(login_register.models.User,through='event_members',null = True,related_name='man_joined')
+      event_zu = models.CharField(null=True,max_length=50)
 class event_details(models.Model):
       event_name = models.OneToOneField(event,on_delete=models.CASCADE,null=True)
       event_detail = models.TextField(null= True)

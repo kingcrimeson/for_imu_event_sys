@@ -61,6 +61,7 @@ def hold_event(request):
     event_now_number = info['event_now_number']
     event_max_number = info['event_max_number']
     event_detail = info['event_detail']
+    event_zu = info['event_zu']
     s_nichen = request.params['nichen']
     id = User.objects.get(nichen=s_nichen)
     with transaction.atomic():
@@ -73,6 +74,7 @@ def hold_event(request):
         new_event.event_sign_up_time=event_sign_up_time
         new_event.event_name=event_name
         new_event.event_start_time=event_start_time
+        new_event.event_zu=event_zu
         new_event.save()
         new_eventdetails=event_details.objects.create()
         new_eventdetails.event_name=new_event
