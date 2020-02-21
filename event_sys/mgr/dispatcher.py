@@ -5,9 +5,9 @@ def dispatch(request):
     if request.session['permission'] < 1:
         return JsonResponse({
             'ret': 302,
-            'msg': '用户没有权限',
+           'msg': '用户没有权限',
               },
-            status=302)
+           status=302)
 
 
     if request.method == 'GET':
@@ -22,3 +22,5 @@ def dispatch(request):
         return mgr.views.listdetail(request)
     elif action == 'delete':
         return mgr.views.delete_event(request)
+    elif action =='power_give':
+        return mgr.views.power_give(request)

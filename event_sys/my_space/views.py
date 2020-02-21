@@ -8,6 +8,7 @@ from login_register.models import User
 from django.core import serializers
 from django.db.models import F,Q
 from django.core.paginator import Paginator, EmptyPage
+from django.forms.models import model_to_dict
 
 def list_event(request):
     request.params = request.GET
@@ -30,6 +31,24 @@ def list_event(request):
          return JsonResponse({'ret': 0, 'event': events, 'total': pgnt.count})
     except EmptyPage:
          return JsonResponse({'ret': 0, 'event': []})
+
+
+def event_details(request):
+    if request.method == 'GET':
+        request.params = request.GET
+        event_id = request.params['id']
+        try:
+             event_msg = models.event.objects.get(id=event_id)
+             events_msg = model_to_dict(event_msg)
+        except:
+            return JsonResponse({'ret': 0, 'msg': '该活动不存在'})
+        event_detail = models.event_details.objects.get(event_name_id=event_msg)
+        event_details = model_to_dict(event_detail)
+        mem = models.event_members.objects.filter(event_id_id=event_msg).values()
+        mem_list=list(mem)
+        return JsonResponse({'ret':0,'event':events_msg,'event_detail':event_details,'mem_list':mem_list})
+
+
 
 def hold_event(request):
     request.params = json.loads(request.body)
@@ -90,7 +109,6 @@ def event_joined(request):
         except:
              return JsonResponse({'ret':1,'msg':'你还没有参与活动'})
     elif request.method == 'DELETE':
-
         request.params = json.loads(request.body)
         username = request.params['username']
         eventid = request.params['event_id']
@@ -107,3 +125,19 @@ def event_joined(request):
              ret = 1
              msg = '退出失败'
         return JsonResponse({'ret':ret,'msg':msg})
+
+
+def change(request):
+    data = json.loads(request.body)
+    username = data['username']
+    oldpass = data['oldpass']
+    password1 = data['password1']
+    password2 = data['password2']
+    user = User.objects.get(name=username)
+    if oldpass !=user.password:
+        return JsonResponse({'ret':1,'msg':'旧密码有误'})
+    elif password1 != password2:
+        return JsonResponse({'ret':1,'msg':'两次新密码不一致'})
+    user.password = password1
+    user.save()
+    return JsonResponse({'ret':0,'msg':'修改成功'})

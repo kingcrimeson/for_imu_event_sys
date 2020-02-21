@@ -1,8 +1,8 @@
 import  requests,pprint
 dat = {
-"action" : 'delete',
-            "event_id" : 4
+"action" : 'power_give',
+            "username" : '12345678'
 }
-response = requests.delete('http://127.0.0.1:8000/api/mgr/delete',json=dat)
+response = requests.post('http://127.0.0.1:8000/api/mgr/power_give',json=dat)
 
 pprint.pprint(response.json())

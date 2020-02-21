@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from . import models
+from login_register.models import User
 import json
 from index.models import event
 from django.core.paginator import Paginator, EmptyPage
 from django.db.models import F,Q
+from django.forms.models import model_to_dict
 import datetime
 
 def list(request):
@@ -35,8 +37,10 @@ def listdetail(request):
     request.params = request.GET
     event_id = request.params['id']
     try:
-         event_msg = models.event.objects.get(id=event_id)
-         event_detail = models.event_details.objects.get(id=event_id)
+         events_msg = models.event.objects.get(id=event_id)
+         event_msg = model_to_dict(events_msg)
+         events_detail = models.event_details.objects.get(event_name_id=events_msg)
+         event_detail=list( events_detail)
          user_id = request.session['user_id']
          same_id = models.event_members.objects.filter(id=user_id)
          if same_id:
@@ -63,4 +67,13 @@ def delete_event(request):
     return JsonResponse({'ret': 0})
 
 
-
+def power_give(request):
+    request.params = json.loads(request.body)
+    username = request.params['username']
+    try:
+        user = User.objects.get(name=username)
+        user.permission = 1
+        user.save()
+        return JsonResponse({'ret':0})
+    except:
+        return JsonResponse({'ret':1,'msg':'用户不存在'})

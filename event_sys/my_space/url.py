@@ -7,4 +7,6 @@ urlpatterns = [
     url('index',my_space.views.list_event),
     url('hold_event',my_space.views.hold_event),
     url('I_ve_joined',my_space.views.event_joined),
+    url('details',my_space.views.event_details),
+    url('change',my_space.views.change)
 ]
