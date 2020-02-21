@@ -4,6 +4,7 @@ from . import models
 import json
 from index.models import event
 from django.core.paginator import Paginator, EmptyPage
+from django.db.models import F,Q
 import datetime
 
 def list(request):
@@ -14,6 +15,13 @@ def list(request):
                     'event_max_number', 'event_now_number', 'events_starter')
         if qs.none():
             return JsonResponse({'ret': 1, 'msg': '还没有活动'})
+        event_nam = request.params.get('event_name', None)
+        if event_nam:
+            conditions = [Q(event_name__contains=one) for one in event_nam.split(' ') if one]
+            query = Q()
+            for condition in conditions:
+                query &= condition
+            qs = qs.filter(query).values()
         pagenum = request.params['pagenum']
         pagesize = request.params['pagesize']
         pgnt = Paginator(qs, pagesize)

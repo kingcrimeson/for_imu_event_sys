@@ -4,7 +4,7 @@ import json
 from django.http import JsonResponse
 from login_register.models import User
 from django.core.paginator import Paginator, EmptyPage
-from django.db.models import F
+from django.db.models import F,Q
 # Create your views here.
 
 
@@ -15,9 +15,17 @@ def listevent(request):
     request.params = request.GET
     try:
         qs = models.event.objects.annotate(events_starter=F('event_starter__nichen'))\
-                                       .values('event_name','event_start_time','event_end_time','event_sign_up_time','event_localtion','event_max_number','event_now_number','events_starter')
+                                       .values('event_name','event_start_time','event_end_time','event_sign_up_time','event_localtion','event_max_number','event_now_number','events_starter')\
+                                       .order_by('-id')
         if qs.none():
             return JsonResponse({'ret': 1,'msg':'还没有活动'})
+        event_nam = request.params.get('event_name',None)
+        if event_nam:
+            conditions = [Q(event_name__contains=one)for one in event_nam.split(' ')if one]
+            query = Q()
+            for condition in conditions:
+                query &= condition
+            qs = qs.filter(query).values()
         pagenum = request.params['pagenum']
         pagesize = request.params['pagesize']
         pgnt = Paginator(qs, pagesize)

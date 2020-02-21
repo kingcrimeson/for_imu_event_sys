@@ -6,7 +6,7 @@ from django.db import transaction
 from index.models import event,event_members,event_details
 from login_register.models import User
 from django.core import serializers
-from django.db.models import F
+from django.db.models import F,Q
 from django.core.paginator import Paginator, EmptyPage
 
 def list_event(request):
@@ -15,6 +15,13 @@ def list_event(request):
     id = User.objects.get(id=user_id)
     try:
          qs = models.event.objects.filter(event_starter=id).values()
+         event_nam = request.params.get('event_name', None)
+         if event_nam:
+             conditions = [Q(event_name__contains=one) for one in event_nam.split(' ') if one]
+             query = Q()
+             for condition in conditions:
+                 query &= condition
+             qs = qs.filter(query).values()
          pagenum = request.params['pagenum']
          pagesize = request.params['pagesize']
          pgnt = Paginator(qs, pagesize)
